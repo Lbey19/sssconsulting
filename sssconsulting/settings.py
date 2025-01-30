@@ -76,7 +76,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sssconsulting.wsgi.application'
 
-
+# configure les paramètres SMTP pour envoyer des emails via Gmail 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ton_email@gmail.com'  # Remplace avec ton email
+EMAIL_HOST_PASSWORD = 'ton_mot_de_passe'  # Remplace avec ton mot de passe
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
