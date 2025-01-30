@@ -1,0 +1,357 @@
+:root {
+    --primary-color: #002855;
+    --secondary-color: #f39c12;
+    --accent-color: #dc3545;
+}
+
+/* Barre supérieure */
+.top-bar {
+    background: linear-gradient(to right, #001a33, var(--primary-color));
+    color: white;
+    font-size: 0.95rem;
+    padding: 12px 0;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Navbar principale */
+.navbar {
+    background: rgba(0, 40, 85, 0.98) !important;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand {
+    transition: transform 0.3s ease;
+}
+
+.logo-hover:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    position: relative;
+    padding: 0.8rem 1.2rem !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.2rem;
+    width: calc(100% - 2.4rem);
+    height: 2px;
+    background: var(--secondary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Section Hero */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(to right, var(--primary-color), #004c91);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Animation texte corrigée */
+#animated-text {
+    min-height: 120px; /* Empêche le saut de layout */
+    display: inline-block; /* Maintient le curseur aligné */
+}
+
+@keyframes blink-cursor {
+    50% { border-color: transparent; }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    #animated-text {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        height: auto;
+        padding: 100px 20px;
+    }
+    
+    .navbar-nav {
+        padding-top: 1rem;
+    }
+}
+
+/* Section About */
+.about-section {
+    background: #f8f9fa;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.security-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #495057;
+}
+
+[data-aos] {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-right"] {
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(50px);
+    opacity: 0;
+}
+
+[data-aos].aos-animate {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Hero Section Services */
+.services-hero {
+    background: linear-gradient(45deg, var(--primary-color), #004c91),
+                url('../images/services-bg.jpg') center/cover;
+    padding: 8rem 0;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+.services-hero .hero-text {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.services-hero h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.services-hero p {
+    font-size: 1.2rem;
+}
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 1rem auto 2rem;
+}
+
+/********************
+ * Section Services
+ ********************/
+ .services-hero-section {
+    height: 50vh;
+    background: linear-gradient(
+        to right,
+        rgba(0, 40, 85, 0.8),
+        rgba(0, 76, 145, 0.8)
+    ),
+    url("../images/services-bg.jpg") no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-hero-content {
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    max-width: 700px;
+}
+
+.services-hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.services-hero-content p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.card h5.card-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.card-text strong {
+    color: var(--secondary-color);
+}
+
+.card-footer {
+    border-top: none !important; /* Supprime le trait */
+    background: transparent !important; /* Évite une couleur de fond gênante */
+    padding-top: 10px; /* Garde une petite marge */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+/********************
+ * Animations
+ ********************/
+[data-aos] {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Ajout d'un effet d'entrée fluide */
+.services-hero-content {
+    animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Effet de survol sur les cartes services */
+.card {
+    transition: all 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Animation pour les cartes lors du défilement */
+[data-aos] {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.card[data-aos]:hover {
+    transform: scale(1.05);
+}
+
+/* Amélioration du bouton CTA */
+.btn-warning {
+    background: linear-gradient(135deg, #ffbe00, #ff8000);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+.btn-warning:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 15px rgba(255, 136, 0, 0.4);
+}
+
+/* Amélioration du titre et des animations */
+.services-hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+/********************
+ * footer
+ ********************/
+
+.footer {
+    background: #002855;
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footer p, .footer a {
+    font-size: 0.95rem;
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--secondary-color);
+}
+
+.footer .social-links a {
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+
+.footer .border-top {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}

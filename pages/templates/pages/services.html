@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Services - SSS Consulting</title>
+
+  <!-- Liens CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Barre supérieure -->
+  <header>
+    <div class="top-bar">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <div class="contact-info d-flex flex-wrap">
+          <span class="me-4">
+            <i class="fas fa-phone-alt me-2"></i>
+            <a href="tel:+33781471845" class="text-white text-decoration-none">+33 7 81 47 18 45</a>
+          </span>
+          <span>
+            <i class="fas fa-envelope me-2"></i>
+            <a href="mailto:contact@sssconsulting.fr" class="text-white text-decoration-none">contact@sssconsulting.fr</a>
+          </span>
+        </div>
+        <div class="social-links d-flex">
+          <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar principale -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a href="#" class="navbar-brand fw-bold d-flex align-items-center">
+          <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-hover" style="height: 40px; margin-right: 10px;">
+          SSS Consulting
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Retour à l'Accueil</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'services' %}">Nos Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Offres d'emploi</a></li>
+          </ul>
+          <a href="tel:+33781471845" class="btn btn-danger ms-lg-3">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section spécifique "Nos Services" -->
+  <section class="services-hero-section">
+    <div class="services-hero-content text-center text-white d-flex flex-column align-items-center justify-content-center">
+      <h1 class="display-4 fw-bold">Nos Services</h1>
+      <p class="lead mt-3">Des solutions clés en main pour protéger votre entreprise</p>
+      <a href="#all-services" class="btn btn-warning btn-lg mt-4">Découvrir nos prestations</a>
+    </div>
+  </section>
+
+  <!-- Section de présentation des services -->
+  <section id="all-services" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title mb-3">Nos Prestations Cybersécurité</h2>
+        <p class="mx-auto" style="max-width: 700px;">
+          Sécurisez vos données confidentielles, réduisez les risques de cyberattaques et restez en conformité
+          avec les normes en vigueur grâce à nos solutions adaptées à votre structure.
+        </p>
+      </div>
+      <div class="row g-4">
+        <!-- Carte Service 1 -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card h-100 shadow">
+            <img src="{% static 'images/service-audit.png' %}" class="card-img-top" alt="Audit de sécurité">
+            <div class="card-body">
+              <h5 class="card-title">Audit de Sécurité Informatique</h5>
+              <p class="card-text">
+                Identifiez vos vulnérabilités et protégez votre système d’information. Notre 
+                <strong>Audit de Sécurité</strong> détecte les failles pour mieux les corriger.
+              </p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="#" class="btn btn-primary w-100">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte Service 2 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="card h-100 shadow">
+            <img src="{% static 'images/service-cloud.png' %}" class="card-img-top" alt="Solutions Cloud Sécurisées">
+            <div class="card-body">
+              <h5 class="card-title">Solutions Cloud Sécurisées</h5>
+              <p class="card-text">
+                Adoptez le <strong>Cloud Sécurisé</strong> pour stocker vos données sensibles tout en gardant une 
+                haute disponibilité. Profitez d’une <em>infrastructure fiable</em> et d’un accès 24/7.
+              </p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="#" class="btn btn-primary w-100">Découvrir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte Service 3 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 shadow">
+            <img src="{% static 'images/service-formation.jpg' %}" class="card-img-top" alt="Formation Cybersécurité">
+            <div class="card-body">
+              <h5 class="card-title">Formation & Sensibilisation</h5>
+              <p class="card-text">
+                Développez une culture de la sécurité au sein de vos équipes. Nous proposons des 
+                <strong>Formations Cybersécurité</strong> adaptées à tous les niveaux pour réduire les risques humains.
+              </p>
+            </div>
+            <div class="card-footer bg-white">
+              <a href="#" class="btn btn-primary w-100">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+      AOS.init();
+  </script>
+  {% include 'pages/footer.html' %}
+
+</body>
+</html>
