@@ -9,6 +9,18 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Charger les variables d'environnement
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Charge depuis .env
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Charge depuis .env
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 from pathlib import Path
 
@@ -76,13 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sssconsulting.wsgi.application'
 
-# configure les paramètres SMTP pour envoyer des emails via Gmail 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ton_email@gmail.com'  # Remplace avec ton email
-EMAIL_HOST_PASSWORD = 'ton_mot_de_passe'  # Remplace avec ton mot de passe
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
