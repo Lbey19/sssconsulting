@@ -1,10 +1,15 @@
 from django.urls import path
-from .views import home, services, contact, test_email  # Importation des vues
+from . import views  # Importez le module views ici
 
 urlpatterns = [
-    path('', home, name='home'),  # http://127.0.0.1:8000/
-    path('services/', services, name='services'),  # http://127.0.0.1:8000/services/
-    path('contact/', contact, name='contact'),  # Page de contact
-    path('test-email/', test_email, name='test_email'),  # Test d'envoi d'email
-]
-
+    path('', views.home, name='home'),
+    path('services/', views.services, name='services'),
+    path('contact/', views.contact, name='contact'),
+    path('blog/', views.liste_articles, name='liste_articles'),
+    path('blog/creer/', views.creer_article, name='creer_article'),
+    path('blog/<slug:slug>/', views.detail_article, name='detail_article'),
+    path('blog/<slug:slug>/commenter/', views.ajouter_commentaire, name='ajouter_commentaire'),
+    path('blog/<slug:slug>/aimer/', views.aimer_article, name='aimer_article'),
+    path('blog/<slug:slug>/noter/', views.noter_article, name='noter_article'),
+    path('valider_article/<int:article_id>/', views.valider_article, name='valider_article'),  # Ajout de l'URL de validation
+]   

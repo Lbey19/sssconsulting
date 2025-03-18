@@ -1,0 +1,25 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    <h1>Liste des articles</h1>
+    {% for article in articles %}
+        <div>
+            <h2><a href="{% url 'detail_article' slug=article.slug %}">{{ article.titre }}</a></h2>
+            <p>Publié le {{ article.date_publication }} par {{ article.auteur.username }}</p>
+            <p>{{ article.contenu|truncatewords:50 }}</p>
+            <a href="{% url 'detail_article' slug=article.slug %}">Lire la suite</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'aimer_article' slug=article.slug %}">
+                    {% if user in article.likes.all %}
+                        Je n'aime plus
+                    {% else %}
+                        J'aime
+                    {% endif %}
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% if user.is_authenticated %}
+    <a href="/blog/ajouter/">Écrire un nouvel article</a>
+    {% endif %}
+{% endblock %}

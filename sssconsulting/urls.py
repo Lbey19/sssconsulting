@@ -21,6 +21,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),  # Inclure les URLs de l'application pages
+    path('blog/', include('pages.urls')),  # Gérer le blog dans pages.urls
+    path('accounts/', include('django.contrib.auth.urls')),  # URLs login/logout/password
 ]
+
 
 

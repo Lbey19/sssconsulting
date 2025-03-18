@@ -18,9 +18,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Charge depuis .env
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Charge depuis .env
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Récupérer depuis .env
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Récupérer depuis .env
+
+
 
 from pathlib import Path
 
@@ -45,7 +46,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Applications Django par défaut
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',  # Gestion des utilisateurs
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

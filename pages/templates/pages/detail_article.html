@@ -1,0 +1,49 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+    <h1>{{ article.titre }}</h1>
+    <p>Publié le {{ article.date_publication }} par {{ article.auteur.username }}</p>
+    <p>{{ article.contenu }}</p>
+
+    <!-- Likes -->
+    {% if user.is_authenticated %}
+        <a href="{% url 'aimer_article' slug=article.slug %}">
+            {% if user in article.likes.all %}
+                Je n'aime plus
+            {% else %}
+                J'aime
+            {% endif %}
+        </a>
+        <p>{{ article.likes.count }} personnes aiment cet article.</p>
+    {% endif %}
+
+    <!-- Notation -->
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'noter_article' slug=article.slug %}">
+            {% csrf_token %}
+            {{ form_notation.as_p }}
+            <button type="submit">Noter</button>
+        </form>
+        <p>Note moyenne : {{ moyenne_notes|floatformat:1 }}/5</p>
+    {% endif %}
+
+    <!-- Commentaires -->
+    <h3>Commentaires</h3>
+    {% for commentaire in commentaires %}
+        <div>
+            <p>{{ commentaire.auteur.username }} a écrit le {{ commentaire.date_creation }} :</p>
+            <p>{{ commentaire.contenu }}</p>
+        </div>
+    {% endfor %}
+
+    <!-- Ajouter un commentaire -->
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'ajouter_commentaire' slug=article.slug %}">
+            {% csrf_token %}
+            {{ form_commentaire.as_p }}
+            <button type="submit">Ajouter un commentaire</button>
+        </form>
+    {% else %}
+        <p>Vous devez être connecté pour commenter.</p>
+    {% endif %}
+{% endblock %}
