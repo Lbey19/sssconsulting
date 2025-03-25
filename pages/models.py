@@ -15,7 +15,7 @@ class Article(models.Model):
     date_creation = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='attente')
     likes = models.ManyToManyField(User, related_name='likes_articles', blank=True)
-    date_publication = models.DateTimeField(null=True, blank=True)  # 🔹 Ajouté ici
+    date_publication = models.DateTimeField(null=True, blank=True)               
     slug = models.SlugField(max_length=255, unique=True, blank=True)
 
     def __str__(self):

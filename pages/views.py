@@ -5,6 +5,18 @@ from django.contrib import messages
 from .forms import ContactForm
 import logging
 
+# Importation du formulaire d'inscription et des modules nécessaires
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from django.utils.text import slugify
+from django.core.exceptions import PermissionDenied
+from django.db.models import Avg, Count
+
+from .models import Article, Commentaire, Notation
+from .forms import ArticleForm, CommentaireForm, NotationForm
+
+
 # Configuration du logger pour capturer les erreurs
 logger = logging.getLogger(__name__)
 
@@ -49,15 +61,23 @@ def contact(request):
 
     return render(request, "pages/contact.html", {"form": form})
 
-# blog/views.py
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.db.models import Avg, Count
-from .models import Article, Commentaire, Notation
-from .forms import ArticleForm, CommentaireForm, NotationForm
-from django.utils import timezone
-from django.utils.text import slugify
-from django.core.exceptions import PermissionDenied  # Import PermissionDenied
+# Vue pour la page d'inscription
+def inscription(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False  # Le compte sera inactif, nécessite validation admin
+            user.save()
+            messages.success(request, "Votre compte a été créé. Un administrateur doit l'activer.")
+            
+            # Au lieu de rediriger vers 'login', on revient sur la page d'inscription
+            return redirect('inscription')  
+    else:
+        form = UserCreationForm()
+    
+    return render(request, 'pages/inscription.html', {'form': form})
+
 
 # ✅ Afficher la liste des articles publiés
 def liste_articles(request):
@@ -146,3 +166,18 @@ def noter_article(request, slug):
                 utilisateur=request.user, article=article, defaults={'note': note}
             )
     return redirect('detail_article', slug=article.slug)
+
+# -----------------------------------------------------------------------------
+# Ajout de fonctions factices pour éviter les erreurs, à remplacer par
+# l'implémentation réelle
+# -----------------------------------------------------------------------------
+
+@login_required
+def ajouter_article(request):
+    # TODO: Implementer la logique pour ajouter un article
+    return render(request, 'pages/ajouter_article.html')
+
+@login_required
+def supprimer_article(request, article_id):
+    # TODO: Implementer la logique pour supprimer un article
+    return redirect('liste_articles')

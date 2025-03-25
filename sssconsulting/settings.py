@@ -89,6 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sssconsulting.wsgi.application'
 
+LOGOUT_REDIRECT_URL = 'home'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

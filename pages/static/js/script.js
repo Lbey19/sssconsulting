@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const words = [
-        "Bienvenue chez SSS Consulting", 
+        "Bienvenue chez SSSConsulting", 
         "Sécurisation de vos données", 
         "Solutions de cybersécurité"
     ];
