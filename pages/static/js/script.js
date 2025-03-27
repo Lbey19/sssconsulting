@@ -61,3 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
         lastScroll = currentScroll;
     });
 });
+
+function showToast(message) {
+    const toast = document.getElementById("connexion-toast");
+    toast.textContent = message;
+    toast.style.display = "block";
+
+    // Masquer après 3 secondes
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
+}
+
+

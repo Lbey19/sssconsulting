@@ -17,11 +17,14 @@ Including another URLconf
 # sssconsulting/urls.py
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from pages import views  # Ajout de cette ligne
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),  # Inclure les URLs de l'application pages
-    path('accounts/', include('django.contrib.auth.urls')),  # URLs login/logout/password
+    path('accounts/login/', views.login_view, name='login'),
     
 ]
 

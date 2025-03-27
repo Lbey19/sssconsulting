@@ -1,10 +1,18 @@
 {% extends "pages/base.html" %}
 
+
 {% block content %}
-    <h2>Connexion</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Se connecter</button>
-    </form>
+<div class="container d-flex justify-content-center mt-5 mb-5">
+    <div class="card p-4 shadow" style="min-width: 400px;">
+        <h2 class="mb-4 text-center">Connexion</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}">
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

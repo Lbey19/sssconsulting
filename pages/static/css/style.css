@@ -404,3 +404,66 @@
 .footer .border-top {
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
+
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-weight: bold;
+    animation: fadeInOut 3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+  
+  .blog-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.blog-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.blog-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.blog-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-2px);
+}
+
+.blog-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: #00264d;
+}
+
+.blog-card small {
+    color: #777;
+}
+

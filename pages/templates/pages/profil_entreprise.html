@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Profil Entreprise</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% include 'pages/header.html' %}
+  <div class="container mt-5">
+    <h2>Profil de {{ user.username }}</h2>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Nom de l'entreprise :</strong> {{ entreprise.company_name }}</p>
+    <p><strong>SIRET :</strong> {{ entreprise.siret }}</p>
+    <p><strong>Téléphone :</strong> {{ entreprise.phone }}</p>
+    <p><strong>Adresse :</strong> {{ entreprise.address }}</p>
+
+    <hr>
+    <h3>Mes articles</h3>
+    <ul>
+      {% for article in articles %}
+        <li>
+          <strong>{{ article.titre }}</strong> - Publié le {{ article.date_publication|date:"d/m/Y H:i" }}
+        </li>
+      {% empty %}
+        <li>Aucun article publié pour l'instant.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% include 'pages/footer.html' %}
+</body>
+</html>
